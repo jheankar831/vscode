@@ -1,53 +1,9 @@
-# Define a function for each operation
-def add(x, y):
-    """Return the sum of x and y"""
-    return x + y
-
-def subtract(x, y):
-    """Return the difference of x and y"""
-    return x - y
-
-def multiply(x, y):
-    """Return the product of x and y"""
-    return x * y
-
-def divide(x, y):
-    """Return the quotient of x and y"""
-    if y == 0:
-        raise ZeroDivisionError("Cannot divide by zero!")
-    return x / y
-
-def calculator():
-    """Run the calculator program"""
-    print("Simple Calculator")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
-
-    while True:
-        choice = input("Enter your choice (1/2/3/4): ")
-        if choice in ['1', '2', '3', '4']:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-
-            if choice == '1':
-                print(f"{num1} + {num2} = {add(num1, num2)}")
-            elif choice == '2':
-                print(f"{num1} - {num2} = {subtract(num1, num2)}")
-            elif choice == '3':
-                print(f"{num1} * {num2} = {multiply(num1, num2)}")
-            elif choice == '4':
-                try:
-                    print(f"{num1} / {num2} = {divide(num1, num2)}")
-                except ZeroDivisionError as e:
-                    print(str(e))
-        else:
-            print("Invalid choice. Please try again.")
-
-        cont = input("Do you want to continue? (y/n): ")
-        if cont.lower() != 'y':
-            break
-
-if __name__ == "__main__":
-    calculator()
+import pandas as p
+import numpy as n
+d={"Day":[1,2,3,4,5,6,7,8,9,10],
+"Steps":[4335,9552,7332,4504,5335,7552,8332,6504,8965,7689]}
+dp=p.DataFrame(d)
+dp["+1000 Steps"]=dp["Steps"]+1000
+fi=dp[dp["+1000 Steps"]>7000]["Day"]
+print("DataFrame:\n",dp)
+print("\nDays on which Steps were >7000:\n",fi)
